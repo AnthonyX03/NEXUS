@@ -1,16 +1,16 @@
 {
-  "name": "NEXUS // ANTHONYX003",
-  "short_name": "NEXUS",
-  "description": "Colección de mundos y juegos web de AnthonyX003.",
-  "lang": "es",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "any",
-  "background_color": "#080a10",
-  "theme_color": "#080a10",
-  "categories": ["games", "entertainment"],
-  "icons": [
+  "name":"NEXUS // ANTHONYX003",
+  "short_name":"NEXUS",
+  "description":"Archivo central de mundos, juegos web, prototipos y experiencias interactivas de AnthonyX003.",
+  "lang":"es",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"any",
+  "background_color":"#070910",
+  "theme_color":"#070910",
+  "categories":["games","entertainment","productivity"],
+  "icons":[
     {"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
     {"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
     {"src":"./icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
