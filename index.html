@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#070910">
 <meta name="background-color" content="#070910">
-<meta name="description" content="NEXUS // ANTHONYX003 — colección de mundos, juegos web, prototipos y experiencias interactivas.">
+<meta name="description" content="Descubre NEXUS, el hub de proyectos interactivos de ANTHONYX003: juegos web, demos jugables, previews y mundos en evolución.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="NEXUS — ANTHONYX003">
+<meta property="og:description" content="Diez proyectos interactivos. Un punto de entrada. Explora juegos, demos y previews.">
+<meta property="og:type" content="website">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -23,7 +27,10 @@
  --shadow:0 22px 70px rgba(0,0,0,.38);--radius:20px;--max:1240px
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+::selection{background:rgba(105,220,255,.28);color:#fff}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 body{margin:0;color:var(--text);background:
  radial-gradient(circle at 85% -5%,rgba(67,174,216,.12),transparent 30rem),
  radial-gradient(circle at -5% 28%,rgba(117,83,199,.08),transparent 28rem),
@@ -77,11 +84,12 @@ h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.05;letter-spacing:-.045em;ma
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .card{position:relative;overflow:hidden;border:1px solid var(--line);background:rgba(9,14,22,.9);border-radius:var(--radius);padding:25px;min-height:465px;display:flex;flex-direction:column;transition:.2s}
 .card:hover{transform:translateY(-4px);border-color:#38546b;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.card .btn{white-space:nowrap}.card-bottom .state{line-height:1.4}
 .card:before{content:"";position:absolute;right:-80px;top:-90px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(105,220,255,.08)}
 .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.title-row{display:flex;gap:13px;align-items:center}
 .game-icon{width:45px;height:45px;border-radius:13px;border:1px solid #294152;background:#0b141d;display:grid;place-items:center;color:var(--cyan);flex:0 0 auto}.game-icon svg{width:24px;height:24px}
 .card h3{margin:4px 0 4px;font-size:1.55rem}.subtitle{font-size:.75rem;color:#718196;letter-spacing:.08em;text-transform:uppercase}
-.status{font-size:.66rem;font-weight:900;border-radius:999px;padding:5px 8px;white-space:nowrap}.active{background:rgba(111,230,160,.12);color:var(--green)}.demo{background:rgba(255,197,107,.12);color:var(--amber)}.preview{background:rgba(105,220,255,.12);color:var(--cyan)}
+.status{font-size:.66rem;font-weight:900;border-radius:999px;padding:5px 8px;white-space:nowrap}.active{background:rgba(111,230,160,.12);color:var(--green)}.demo{background:rgba(255,197,107,.12);color:var(--amber)}.preview{background:rgba(105,220,255,.12);color:var(--cyan)}.release{background:rgba(111,230,160,.12);color:var(--green)}
 .card p{color:var(--muted)}.card .description{color:#c2cfdd;font-size:.92rem}
 .card-bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}.state{font-size:.78rem;color:#718195}
 .about-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.panel{border:1px solid var(--line);background:#090e16;border-radius:var(--radius);padding:28px}.panel h3{margin-top:0}.panel p,.panel li{color:var(--muted)}.panel ul{padding-left:20px}
@@ -108,7 +116,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#6e7d90;font-size:.
   <h1>PLAY.<br>EXPLORE.<br>CREATE.</h1>
   <p class="hero-copy"><strong>NEXUS</strong> es el archivo central de los proyectos interactivos de AnthonyX003: mundos en desarrollo, demos jugables, previews y experimentos web. <strong>Cada proyecto conserva su propia identidad y evolución.</strong></p>
   <div class="hero-actions"><a class="btn primary" href="#projects">Explorar proyectos →</a><a class="btn" href="#about">Descubrir NEXUS</a></div>
-  <div class="statusline"><span><i class="dot"></i>Wasteland · desarrollo activo</span><span>5 proyectos</span><span>PC · Mobile · Web</span></div>
+  <div class="statusline"><span><i class="dot"></i>Wasteland · desarrollo activo</span><span id="projectCount">10 proyectos</span><span>PC · Mobile · Web</span></div>
  </div>
  <div class="nexus-card"><div class="nexus-label">PROJECT NETWORK</div><div class="nexus-orbit"><div class="orbit"></div><div class="orbit o2"></div><div class="core">N</div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i></div><div class="nexus-label">ONE HUB / MANY WORLDS</div></div>
 </div></section>
@@ -119,9 +127,10 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#6e7d90;font-size:.
 </div></section>
 
 <section id="projects"><div class="container">
- <div class="section-head"><div><div class="eyebrow">THE ARCHIVE</div><h2>Projects</h2></div><p>Una lectura más completa de cada proyecto, con estado, género, identidad y nivel de desarrollo. Las descripciones separan lo que ya está presente de lo que todavía es una preview.</p></div>
- <div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="rpg">RPG</button><button class="filter" data-filter="preview">Preview</button><button class="filter" data-filter="demo">Demo</button><button class="filter" data-filter="narrative">Narrative</button></div>
+ <div class="section-head"><div><div class="eyebrow">THE ARCHIVE / 10 WORLDS</div><h2>Proyectos</h2></div><p>Un catálogo vivo de juegos, experimentos y experiencias interactivas. Cada ficha indica en qué punto está el proyecto: desde una demo que ya puedes probar hasta una versión 1.0 que seguirá recibiendo mejoras.</p></div>
+ <div class="filters"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="active">Active</button><button class="filter" data-filter="release">1.0</button><button class="filter" data-filter="demo">Demo</button><button class="filter" data-filter="preview">Preview</button></div>
  <input class="search" id="search" placeholder="Buscar por nombre, género o sistema…" aria-label="Buscar proyecto">
+ <p id="resultsInfo" class="muted" aria-live="polite" style="font-size:.84rem;margin:0 0 14px">10 proyectos disponibles</p>
  <div class="grid" id="grid">
 
  <article class="card" data-type="rpg active" data-search="wasteland rpg supervivencia fallout 2290 mapa personaje misiones inventario refugio comercio radiacion">
@@ -148,12 +157,41 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#6e7d90;font-size:.
   <div class="tags"><span class="tag">Fantasy</span><span class="tag">First Person</span><span class="tag">Daggerfall</span></div><div class="card-bottom"><span class="state">Preview inicial</span><a class="btn" href="https://anthonyx03.github.io/Tamriel/" target="_blank" rel="noopener">Ver ↗</a></div>
  </article>
 
- <article class="card" data-type="narrative active" data-search="raccoon nightfall files rnf archivo incidente misterio investigación nocturno narrativa expediente 01:47 version 1.0 fase final mejoras contenido actualizaciones">
-  <div class="card-head"><div class="title-row"><div class="game-icon">🕵</div><div><div class="subtitle">05 / Narrative File</div><h3>Raccoon Nightfall Files</h3></div></div><span class="status active">VERSION 1.0</span></div>
+ <article class="card" data-type="narrative release" data-search="raccoon nightfall files rnf archivo incidente misterio investigación nocturno narrativa expediente 01:47 version 1.0 fase final mejoras contenido actualizaciones">
+  <div class="card-head"><div class="title-row"><div class="game-icon">🕵</div><div><div class="subtitle">05 / Narrative File</div><h3>Raccoon Nightfall Files</h3></div></div><span class="status release">VERSION 1.0</span></div>
   <p>Una experiencia de misterio presentada como un expediente nocturno, actualmente en su versión 1.0 y en fase final.</p><p class="description">La página se presenta bajo las siglas <strong>RNF</strong> y la identidad “RACCOON NIGHTFALL FILES”, con la cabecera “ARCHIVO DE INCIDENTE // 01:47 AM” y una interfaz de carga de archivo local. La versión 1.0 representa la fase final de esta primera edición del proyecto, aunque su desarrollo no termina aquí: seguirán llegando mejoras, ajustes, contenido adicional y nuevas actualizaciones con el tiempo.</p>
   <div class="tags"><span class="tag">Mystery</span><span class="tag">Narrative</span><span class="tag">RNF</span><span class="tag">v1.0</span><span class="tag">01:47 AM</span></div><div class="card-bottom"><span class="state">Fase final · seguirá mejorando</span><a class="btn" href="https://anthonyx03.github.io/Raccoon-Nightfall-Files/" target="_blank" rel="noopener">Abrir ↗</a></div>
  </article>
- </div>
+
+ <article class="card" data-type="horror release" data-search="test subject terror horror test preguntas teclado respuestas experiencia psicológica versión 1.0 mejoras">
+  <div class="card-head"><div class="title-row"><div class="game-icon">🧪</div><div><div class="subtitle">06 / Psychological Horror</div><h3>Test Subject</h3></div></div><span class="status release">VERSION 1.0</span></div>
+  <p>Un test inquietante en el que cada respuesta te adentra un poco más en la experiencia.</p><p class="description">Una experiencia de terror interactiva construida alrededor de preguntas, respuestas escritas y una presencia que conversa contigo. La versión 1.0 establece la primera edición jugable; el proyecto seguirá evolucionando con ajustes, mejoras y nuevas sorpresas.</p>
+  <div class="tags"><span class="tag">Horror</span><span class="tag">Interactive Test</span><span class="tag">v1.0</span></div><div class="card-bottom"><span class="state">Versión 1.0 · en evolución</span><a class="btn" href="https://anthonyx03.github.io/Test-Subject/" target="_blank" rel="noopener">Entrar ↗</a></div>
+ </article>
+
+ <article class="card" data-type="companion preview" data-search="tiny buddy asistente compañero virtual mascota desktop interacción preview avanzada">
+  <div class="card-head"><div class="title-row"><div class="game-icon">🤖</div><div><div class="subtitle">07 / Virtual Companion</div><h3>Tiny Buddy</h3></div></div><span class="status preview">PREVIEW</span></div>
+  <p>Un pequeño compañero virtual diseñado para dar vida a la pantalla.</p><p class="description">Tiny Buddy se presenta como una preview más avanzada: una base funcional para explorar la personalidad, las interacciones y la presencia de un compañero digital. Sigue siendo una versión preliminar, por lo que sus funciones y comportamiento pueden cambiar mientras continúa desarrollándose.</p>
+  <div class="tags"><span class="tag">Companion</span><span class="tag">Interactive</span><span class="tag">Preview</span></div><div class="card-bottom"><span class="state">Preview avanzada</span><a class="btn" href="https://anthonyx03.github.io/Tiny-Buddy/" target="_blank" rel="noopener">Conocer ↗</a></div>
+ </article>
+
+ <article class="card" data-type="meme release" data-search="memeverso memeverse memes humor clicker juego web versión 1.0 mejoras">
+  <div class="card-head"><div class="title-row"><div class="game-icon">😂</div><div><div class="subtitle">08 / Meme Universe</div><h3>MEMEVerso</h3></div></div><span class="status release">VERSION 1.0</span></div>
+  <p>Un universo web con identidad propia alrededor del humor y la cultura meme.</p><p class="description">MEMEVerso ya cuenta con una primera versión 1.0 publicada. Esta edición sirve como punto de partida y no como cierre definitivo: se esperan mejoras, retoques y nuevas actualizaciones para ampliar y pulir la experiencia.</p>
+  <div class="tags"><span class="tag">Memes</span><span class="tag">Web Game</span><span class="tag">v1.0</span></div><div class="card-bottom"><span class="state">Versión 1.0 · en evolución</span><a class="btn" href="https://anthonyx03.github.io/MEMEVerso/" target="_blank" rel="noopener">Jugar ↗</a></div>
+ </article>
+
+ <article class="card" data-type="space demo" data-search="nebula espacio sci fi ciencia ficción demo jugable exploración universo">
+  <div class="card-head"><div class="title-row"><div class="game-icon">🌌</div><div><div class="subtitle">09 / Space Experience</div><h3>Nebula</h3></div></div><span class="status demo">DEMO</span></div>
+  <p>Una demo jugable de temática espacial que permite probar la idea en primera persona.</p><p class="description">Nebula está disponible como demo, así que puedes entrar y experimentar con la propuesta actual sin confundirla con una versión definitiva. Su contenido, sistemas y presentación pueden evolucionar en futuras iteraciones.</p>
+  <div class="tags"><span class="tag">Sci-Fi</span><span class="tag">Space</span><span class="tag">Demo</span></div><div class="card-bottom"><span class="state">Demo jugable</span><a class="btn" href="https://anthonyx03.github.io/Nebula/" target="_blank" rel="noopener">Probar ↗</a></div>
+ </article>
+
+ <article class="card" data-type="adventure preview" data-search="aetherwilds aether wilds aventura fantasía naturaleza mundo exploración preview preliminar">
+  <div class="card-head"><div class="title-row"><div class="game-icon">🌿</div><div><div class="subtitle">10 / Preview</div><h3>AetherWilds</h3></div></div><span class="status preview">PREVIEW</span></div>
+  <p>Una preview de aventura que abre la puerta a un nuevo mundo por descubrir.</p><p class="description">AetherWilds se encuentra en fase de preview. Esta publicación permite conocer la dirección actual del proyecto mientras su identidad, contenido y sistemas continúan tomando forma. La experiencia puede cambiar a medida que avance el desarrollo.</p>
+  <div class="tags"><span class="tag">Adventure</span><span class="tag">Exploration</span><span class="tag">Preview</span></div><div class="card-bottom"><span class="state">Preview · en desarrollo</span><a class="btn" href="https://anthonyx03.github.io/AetherWilds/" target="_blank" rel="noopener">Explorar ↗</a></div>
+ </article> </div>
 </div></section>
 
 <section id="about"><div class="container">
@@ -161,9 +199,9 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#6e7d90;font-size:.
  <div class="about-grid">
   <div class="panel"><h3>Un archivo vivo</h3><p>NEXUS funciona como portada, launcher y archivo vivo de los mundos creados por AnthonyX003. Una idea puede aparecer como prototipo, convertirse en demo y terminar transformándose en un proyecto mucho mayor.</p></div>
   <div class="panel"><h3>Construir antes de terminar</h3><ul><li><strong>Prototype first:</strong> convertir conceptos en sistemas jugables.</li><li><strong>Play early:</strong> probar la idea antes de cerrarla.</li><li><strong>Iterate:</strong> mejorar UI, sistemas y contenido con cada versión.</li><li><strong>Keep identity:</strong> cada mundo conserva su propia estética y dirección.</li></ul></div>
-  <div class="panel"><h3>Una colección de géneros</h3><p>Supervivencia postapocalíptica, casino roguelike, cyberpunk visual, fantasía en primera persona y misterio narrativo conviven en un mismo punto de entrada. La variedad es parte del proyecto.</p></div>
+  <div class="panel"><h3>Una colección de géneros</h3><p>Supervivencia postapocalíptica, casino roguelike, cyberpunk, fantasía, misterio, terror interactivo, compañeros virtuales, humor y experiencias espaciales conviven en un mismo punto de entrada. La variedad es parte del proyecto.</p></div>
   <div class="panel"><h3>Tecnología y distribución</h3><p>El ecosistema está planteado con tecnologías web y publicación mediante GitHub Pages. NEXUS incorpora además manifest, Service Worker, iconos y comportamiento responsive para funcionar como PWA en dispositivos compatibles.</p></div>
-  <div class="panel"><h3>Estados claros</h3><p><strong>ACTIVE</strong> indica desarrollo continuo. <strong>DEMO</strong> significa que existe una experiencia jugable pero puede contener errores. <strong>PREVIEW</strong> identifica proyectos tempranos que pueden cambiar radicalmente. <strong>VERSION 1.0</strong> identifica una primera versión finalizada que continuará recibiendo mejoras y actualizaciones.</p></div>
+  <div class="panel"><h3>Estados claros</h3><p><strong>ACTIVE</strong> indica desarrollo continuo. <strong>DEMO</strong> significa que existe una experiencia jugable pero puede contener errores. <strong>PREVIEW</strong> identifica proyectos tempranos que pueden cambiar radicalmente. <strong>VERSION 1.0</strong> identifica una primera versión publicada que continuará recibiendo mejoras y actualizaciones.</p></div>
   <div class="panel"><h3>Los proyectos son independientes</h3><p>Instalar NEXUS no instala automáticamente los juegos. Cada proyecto conserva su propia URL y, cuando corresponda, puede ofrecer su propia instalación PWA de forma independiente.</p></div>
  </div>
 </div></section>
@@ -175,9 +213,9 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#6e7d90;font-size:.
  </div></div></section>
 </main>
 
-<footer><div class="container">NEXUS // ANTHONYX003 · Interactive Worlds · GitHub Pages · 5 projects</div></footer>
+<footer><div class="container">NEXUS // ANTHONYX003 · Interactive Worlds · GitHub Pages · 10 proyectos</div></footer>
 
-<div class="modal" id="modal"><div class="modal-box"><button class="iconbtn close" id="close">✕</button><div class="eyebrow">NEXUS ARCHIVE</div><h2>About</h2><p class="muted">Cinco proyectos. Cinco identidades. Un punto de entrada. NEXUS existe para presentar el estado actual de cada mundo sin ocultar que algunos están en construcción.</p><p class="muted">El objetivo es que la página se sienta como una plataforma propia, no como una simple lista de enlaces.</p></div></div>
+<div class="modal" id="modal"><div class="modal-box"><button class="iconbtn close" id="close">✕</button><div class="eyebrow">NEXUS ARCHIVE</div><h2>About</h2><p class="muted">Diez proyectos. Diez identidades. Un punto de entrada. NEXUS existe para presentar el estado actual de cada mundo sin ocultar que algunos están en construcción.</p><p class="muted">El objetivo es que la página se sienta como una plataforma propia, no como una simple lista de enlaces.</p></div></div>
 <div class="toast" id="toast"></div>
 <audio id="music" src="./Intro.mp3" loop preload="auto" autoplay></audio>
 
@@ -217,9 +255,10 @@ installBtn.onclick=installApp;installBtn2.onclick=installApp;
 window.addEventListener('appinstalled',()=>{installBtn.style.display='none';toast('NEXUS instalado correctamente')});
 
 const search=document.getElementById('search'),cards=[...document.querySelectorAll('.card')];let filter='all';
+const resultsInfo=document.getElementById('resultsInfo');
 document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;applyFilter()});
 search.oninput=applyFilter;
-function applyFilter(){const q=search.value.toLowerCase().trim();cards.forEach(c=>{const a=filter==='all'||c.dataset.type.includes(filter),b=!q||c.dataset.search.includes(q);c.classList.toggle('hidden',!(a&&b))})}
+function applyFilter(){const q=search.value.toLowerCase().trim();let visible=0;cards.forEach(c=>{const a=filter==='all'||c.dataset.type.includes(filter),b=!q||(c.dataset.search+' '+c.innerText).toLowerCase().includes(q),show=a&&b;c.classList.toggle('hidden',!show);if(show)visible++});resultsInfo.textContent=visible===1?'1 proyecto encontrado':`${visible} proyectos encontrados`;resultsInfo.style.color=visible?'':'var(--amber)'}
 
 const modal=document.getElementById('modal');document.getElementById('close').onclick=()=>modal.classList.remove('open');
 document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
